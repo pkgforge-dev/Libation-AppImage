@@ -11,11 +11,13 @@ export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}
 export ICON=/usr/share/icons/hicolor/scalable/apps/libation.svg
 export DESKTOP=/usr/share/applications/Libation.desktop
 #export DEPLOY_DOTNET=1 fails for some reason
+export MAIN_BIN=libation
 
 # Deploy dependencies
 mkdir -p ./AppDir/bin
 cp -r /usr/lib/libation/* ./AppDir/bin
 quick-sharun $(find ./AppDir/bin -type f ! -name '*.dll' ! -name '*.json' -print)
+echo 'WEBKIT_DISABLE_COMPOSITING_MODE=1' >> ./AppDir/.env
 
 # Additional changes can be done in between here
 
