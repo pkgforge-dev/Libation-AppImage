@@ -15,7 +15,7 @@ export DESKTOP=/usr/share/applications/Libation.desktop
 # Deploy dependencies
 mkdir -p ./AppDir/bin
 cp -r /usr/lib/libation/* ./AppDir/bin
-quick-sharun ./AppDir/bin/*
+quick-sharun $(find ./AppDir/bin -type f ! -name '*.dll' ! -name '*.json' -print)
 
 # Additional changes can be done in between here
 
