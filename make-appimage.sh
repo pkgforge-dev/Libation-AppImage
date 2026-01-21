@@ -16,6 +16,7 @@ export MAIN_BIN=libation
 # Deploy dependencies
 mkdir -p ./AppDir/bin
 cp -r /usr/lib/libation/* ./AppDir/bin
+[ -f ./AppDir/bin/libation ] || ln -s Libation ./AppDir/bin/libation
 quick-sharun $(find ./AppDir/bin -type f ! -name '*.dll' ! -name '*.json' -print)
 echo 'WEBKIT_DISABLE_COMPOSITING_MODE=1' >> ./AppDir/.env
 
