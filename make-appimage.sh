@@ -10,13 +10,12 @@ export ADD_HOOKS="self-updater.bg.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
 export ICON=/usr/share/icons/hicolor/scalable/apps/libation.svg
 export DESKTOP=/usr/share/applications/Libation.desktop
-export DEPLOY_DOTNET=1
+#export DEPLOY_DOTNET=1 fails for some reason
 
 # Deploy dependencies
-quick-sharun \
-	/usr/bin/libation* \
-	/usr/bin/hangover  \
-	/usr/lib/libation
+mkdir -p ./AppDir/bin
+cp -r /usr/lib/libation/* ./AppDir/bin
+quick-sharun ./AppDir/bin/*
 
 # Additional changes can be done in between here
 
